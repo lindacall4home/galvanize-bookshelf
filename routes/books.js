@@ -8,7 +8,6 @@ const bodyParser = require('body-parser');
 const router = express.Router();
 var knex = require('../knex');
 
-// YOUR CODE HERE
 router.get('/books', (req, res, next)=>{
   knex('books')
   .orderBy('title')
