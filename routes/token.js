@@ -23,6 +23,16 @@ router.get('/token', function (req,res,next) {
 router.post('/token', function (req,res,next) {
   let body = req.body;
 
+  if(!body.email){
+    res.setHeader('Content-Type', 'text/plain');
+    return res.status(400).send('Email must not be blank');
+  }
+
+  if(!body.password){
+    res.setHeader('Content-Type', 'text/plain');
+    return res.status(400).send('Password must not be blank');
+  }
+
   knex('users')
   .select()
   .where('email', body.email)
