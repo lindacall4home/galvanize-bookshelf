@@ -52,12 +52,13 @@ app.use(function (req,res,next) {
     jwt.verify(req.cookies.token,process.env.JWT_SECRET, function (err,decoded) {
       if (err) {
         res.clearCookie('token');
-        return next(err);
+        next(err);
       }
       req.user = decoded;
       next();
     });
-  } else {
+  }
+  else {
     next();
   }
 });
